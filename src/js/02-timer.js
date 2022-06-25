@@ -47,16 +47,13 @@ function onClickStartBtn() {
   INTERVAL_ID = setInterval(() => {
     if (TARGET_DATE <= CURRENT_DATE) {
       onTimerStop();
-      beacon();
-      refs.stopBtn.removeAttribute('disabled', true);
-      // window.alert('Action!!!');
+      window.alert('Action!!!');
       return;
     }
 
     CURRENT_DATE = new Date();
     const deltaTime = Date.parse(TARGET_DATE) - Date.parse(CURRENT_DATE);
     const time = getTimeComponents(deltaTime);
-    console.log('time', time);
 
     updateTimerFace(time);
   }, 1000);
@@ -64,18 +61,17 @@ function onClickStartBtn() {
 
 function onClickStopBtn() {
   onTimerStop();
-  beaconStop();
 }
 
-function pad(value) {
+function addLeadingZero(value) {
   return String(value).padStart(2, '0');
 }
 
 function getTimeComponents(time) {
-  const days = pad(Math.floor(time / (1000 * 60 * 60 * 24)));
-  const hours = pad(Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
-  const mins = pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
-  const secs = pad(Math.floor((time % (1000 * 60)) / 1000));
+  const days = addLeadingZero(Math.floor(time / (1000 * 60 * 60 * 24)));
+  const hours = addLeadingZero(Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+  const mins = addLeadingZero(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
+  const secs = addLeadingZero(Math.floor((time % (1000 * 60)) / 1000));
 
   return { days, hours, mins, secs };
 }
@@ -92,20 +88,4 @@ function onTimerStop() {
   refs.stopBtn.setAttribute('disabled', true);
   const time = getTimeComponents(0);
   updateTimerFace(time);
-}
-
-function beacon() {
-  bobyIntervalId = setInterval(() => {
-    document.body.style.backgroundColor = getRandomHexColor();
-  }, 500);
-}
-
-function beaconStop() {
-  clearInterval(bobyIntervalId);
-  refs.stopBtn.addEventListener('click', onClickStopBtn);
-  document.body.removeAttribute('style');
-}
-
-function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
