@@ -1,8 +1,9 @@
 {
-  "name": "v02",
+  "name": "hw_09.v02",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://zmei55.github.io/goit-js-hw-09v02/",
+  "main": "index.js",
+  "homepage": "https://zmei55.github.io/goit-js-hw-09v02",
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html --public-url /goit-js-hw-09v02/"
