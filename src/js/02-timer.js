@@ -1,5 +1,6 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
+import Notiflix from 'notiflix';
 
 const refs = {
   inputRef: document.querySelector('#datetime-picker'),
@@ -17,7 +18,6 @@ refs.stopBtn.setAttribute('disabled', true);
 let CURRENT_DATE = 0;
 let TARGET_DATE = 0;
 let INTERVAL_ID = 0;
-let bobyIntervalId = 0;
 
 const fp = flatpickr(refs.inputRef, {
   enableTime: true,
@@ -27,7 +27,7 @@ const fp = flatpickr(refs.inputRef, {
   time_24hr: true,
   onClose(selectedDates) {
     if (selectedDates[0] <= CURRENT_DATE) {
-      window.alert('Please choose a date in the future');
+      Notiflix.Notify.failure('Please choose a date in the future');
     }
 
     if (selectedDates[0] > CURRENT_DATE) {
@@ -47,7 +47,7 @@ function onClickStartBtn() {
   INTERVAL_ID = setInterval(() => {
     if (TARGET_DATE <= CURRENT_DATE) {
       onTimerStop();
-      window.alert('Action!!!');
+      Notiflix.Notify.success('Action!!!');
       return;
     }
 
