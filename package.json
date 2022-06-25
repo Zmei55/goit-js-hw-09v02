@@ -7,9 +7,16 @@
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html --public-url /goit-js-hw-09v02/"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zmei55/goit-js-hw-09v02.git"
+  },
   "keywords": [],
   "author": "Andrei",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zmei55/goit-js-hw-09v02"
+  },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.2",
     "parcel": "^2.6.2",
