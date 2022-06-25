@@ -11,6 +11,9 @@ body {
 }
 
 .date-picker {
+  display: flex;
+  justify-content: center;
+  gap: .3em;
   margin-bottom: 1rem;
 }
 
