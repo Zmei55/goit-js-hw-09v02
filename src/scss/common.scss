@@ -16,19 +16,3 @@ img {
   display: block;
   max-width: 100%;
 }
-
-.switcher {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-}
-
-.switcher__btn {
-  height: 40px;
-  width: 60px;
-  box-shadow: 5px 3px 3px black;
-}
-
-.switcher__btn:not(:last-child) {
-  margin-right: 15px;
-}
