@@ -12,8 +12,8 @@ const refs = {
   secondsRef: document.querySelector('span[data-seconds]'),
 };
 
-refs.startBtn.setAttribute('disabled', true);
-refs.stopBtn.setAttribute('disabled', true);
+deactivateStartBtn();
+deactivateStopBtn();
 
 let CURRENT_DATE = 0;
 let TARGET_DATE = 0;
@@ -31,7 +31,7 @@ const fp = flatpickr(refs.inputRef, {
     }
 
     if (selectedDates[0] > CURRENT_DATE) {
-      refs.startBtn.removeAttribute('disabled', true);
+      activateStartBtn();
       TARGET_DATE = selectedDates[0];
     }
   },
@@ -41,8 +41,8 @@ refs.startBtn.addEventListener('click', onClickStartBtn);
 refs.stopBtn.addEventListener('click', onClickStopBtn);
 
 function onClickStartBtn() {
-  refs.startBtn.setAttribute('disabled', true);
-  refs.stopBtn.removeAttribute('disabled', true);
+  deactivateStartBtn();
+  activateStopBtn();
 
   INTERVAL_ID = setInterval(() => {
     if (TARGET_DATE <= CURRENT_DATE) {
@@ -85,7 +85,23 @@ function updateTimerFace({ days, hours, mins, secs }) {
 
 function onTimerStop() {
   clearInterval(INTERVAL_ID);
-  refs.stopBtn.setAttribute('disabled', true);
+  deactivateStopBtn();
   const time = getTimeComponents(0);
   updateTimerFace(time);
+}
+
+function deactivateStartBtn() {
+  refs.startBtn.setAttribute('disabled', true);
+}
+
+function deactivateStopBtn() {
+  refs.stopBtn.setAttribute('disabled', true);
+}
+
+function activateStartBtn() {
+  refs.startBtn.removeAttribute('disabled', true);
+}
+
+function activateStopBtn() {
+  refs.stopBtn.removeAttribute('disabled', true);
 }
