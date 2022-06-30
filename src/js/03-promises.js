@@ -24,7 +24,7 @@ function onClickSubmitBtn(event) {
 
     createPromise(i, delay)
       .then(({ position, delay }) => {
-        Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+        return Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
         Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
