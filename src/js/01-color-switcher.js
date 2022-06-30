@@ -1,4 +1,5 @@
-import '../scss/main.scss';
+import '../scss/common.scss';
+import '../scss/color-switcher.scss';
 
 const refs = {
   startBtn: document.querySelector('[data-start]'),
