@@ -1,5 +1,3 @@
-import '../scss/common.scss';
-import '../scss/timer.scss';
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import Notiflix from 'notiflix';

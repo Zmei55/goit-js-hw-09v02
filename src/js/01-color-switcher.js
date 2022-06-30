@@ -1,6 +1,3 @@
-import '../scss/common.scss';
-import '../scss/color-switcher.scss';
-
 const refs = {
   startBtn: document.querySelector('[data-start]'),
   stopBtn: document.querySelector('[data-stop]'),
